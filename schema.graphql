@@ -1,6 +1,20 @@
-type ExampleEntity @entity {
+type People @entity {
   id: ID!
-  count: BigInt!
-  owner: Bytes! # address
-  approved: Bytes! # address
+  lands: [TokenInfo!]
+}
+
+type TokenInfo @entity {
+  id: ID!
+  x: BigInt!
+  y: BigInt!
+  slogan: String
+  owner: People!
+  minted: People
+  neighbors: [TokenInfo!]
+  tokenId: BigInt
+  tokenSvg: String
+  createdAtTimestamp: BigInt!
+  createdAtBlockNumber: BigInt!
+  givedAtTimestamp: BigInt
+  givedAtBlockNumber: BigInt
 }

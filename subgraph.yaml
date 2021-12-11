@@ -1,4 +1,4 @@
-specVersion: 0.0.1
+specVersion: 0.0.2
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,32 +8,22 @@ dataSources:
     source:
       address: "0xd1d30b80c5efb9145782634fe0f9cbed5d24ef3b"
       abi: PeopleLandV1
+      startBlock: 13695246
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.2
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Approval
-        - ApprovalForAll
-        - GiveTo
-        - Mint
-        - OwnershipTransferred
-        - SetSlogan
-        - Transfer
+        - TokenInfo
+        - People
       abis:
         - name: PeopleLandV1
           file: ./abis/PeopleLandV1.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
         - event: GiveTo(int128,int128,address)
           handler: handleGiveTo
         - event: Mint(int128,int128,address)
           handler: handleMint
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: SetSlogan(int128,int128,string)
           handler: handleSetSlogan
         - event: Transfer(indexed address,indexed address,indexed uint256)
