@@ -4,7 +4,10 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --product hosted-service peopleland/v1-subgraph",
+    "codegen-ropsten": "graph codegen subgraph-ropsten.yaml",
+    "build-ropsten": "graph build subgraph-ropsten.yaml",
+    "deploy": "yarn codegen && yarn build && graph deploy --product hosted-service peopleland/v1-subgraph",
+    "deploy-ropsten": "yarn codegen-ropsten && yarn build-ropsten && graph deploy --product hosted-service peopleland/v1-subgraph-ropsten subgraph-ropsten.yaml",
     "create-local": "graph create --node http://localhost:8020/ v1-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ v1-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 v1-subgraph"
